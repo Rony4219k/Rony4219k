@@ -1,0 +1,72 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Rock {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How many times do you want to play ??");
+        int times = sc.nextInt();
+        int i = 1;
+        int wins = 0;
+        int looses = 0;
+        int draws = 0;
+        while (i <= times) {
+            System.out.println("1 : Rock");
+            System.out.println("2 : Scissor");
+            System.out.println("3 : Paper");
+            System.out.print("Enter your answer Here ==> ");
+            int ans = sc.nextInt();
+            Random rand = new Random();
+            int comp = rand.nextInt(1, 4);
+            switch (ans) {
+                case 1 -> System.out.println("You chose Rock");
+                case 2 -> System.out.println("You chose Scissor");
+                case 3 -> System.out.println("You chose Paper");
+            }
+            switch (comp) {
+                case 1 -> System.out.println("Computer chose Rock");
+                case 2 -> System.out.println("Computer chose Scissor");
+                case 3 -> System.out.println("Computer chose Paper");
+            }
+            if (ans == 3 || ans == 2 || ans == 1) {
+                if (ans == 1 && comp == 2) {
+                    System.out.println("You won !!!");
+                    ++wins;
+                } else if (ans == 2 && comp == 3) {
+                    System.out.println("You won !!!");
+                    ++wins;
+                } else if (ans == 3 && comp == 1) {
+                    System.out.println("You won !!!");
+                    ++wins;
+                } else if (ans == 3 && comp == 2) {
+                    System.out.println("You lost !!!");
+                    ++looses;
+                } else if (ans == 2 && comp == 1) {
+                    System.out.println("You lost !!!");
+                    ++looses;
+                } else if (ans == 1 && comp == 3) {
+                    System.out.println("You lost !!!");
+                    ++looses;
+                } else {
+                    System.out.println("Draw");
+                    ++draws;
+                }
+                i++;
+            }
+            else {
+                System.out.println("Not possible");
+            }
+        }
+        System.out.println("You won "+wins+" times");
+        System.out.println("You lost "+looses+" times");
+        System.out.println("You made "+draws+" draws");
+        if(wins > looses){
+            System.out.println("All total you won");
+        }
+        else if(wins < looses){
+            System.out.println("All total you lost");
+        }
+        else {
+            System.out.println("All total you made it draw");
+        }
+    }
+}
